@@ -6,6 +6,7 @@ export const Filter = () => {
 
   return (
     <div className="col-sm-3">
+      <p>Filter your contacts 😄</p>
       <input
         name="filter"
         className="form-control"

@@ -1,14 +1,19 @@
-import { Form } from './Form/Form';
-import { Contacts } from './Contacts/Contacts';
-import { Filter } from './Filter/Filter';
+import Contacts from 'pages/Contacts/Contacts';
+import { Route, Routes } from 'react-router-dom';
+import Header from './Header/UserMenu';
+import Register from 'pages/Register/Register';
+import WelcomePage from 'pages/WelcomePage/WelcomePage';
+import Login from 'pages/Login/Login';
 
 export const App = () => {
   return (
-    <>
-      <Form />
-      <p>Filter your contacts 😄</p>
-      <Filter />
-      <Contacts />
-    </>
+    <Routes>
+      <Route path="/" element={<Header />}>
+        <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Route>
+    </Routes>
   );
 };

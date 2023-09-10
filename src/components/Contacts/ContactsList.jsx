@@ -6,7 +6,7 @@ import {
 } from 'redux/contactsThunk/contactsThunk';
 import { useEffect } from 'react';
 
-export const Contacts = () => {
+export const ContactsList = () => {
   const contacts = useSelector(getStateContacts);
   const filter = useSelector(getStateFilter);
 
