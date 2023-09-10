@@ -5,6 +5,7 @@ import {
   getContactsThunk,
 } from 'redux/contactsThunk/contactsThunk';
 import { useEffect } from 'react';
+import styles from './ContactsList.module.css';
 
 export const ContactsList = () => {
   const contacts = useSelector(getStateContacts);
@@ -27,14 +28,14 @@ export const ContactsList = () => {
 
   return (
     <>
-      <h2>Contacts</h2>
-      <ul className="col-sm-3">
+      <h2 className={styles.contacts_list_title}>Contacts</h2>
+      <ul className={styles.contacts_list}>
         {filteredContacts.map(contact => (
-          <li key={contact.id}>
+          <li className={styles.contacts_list_item} key={contact.id}>
             {contact.name} : {contact.number}{' '}
             <button
               type="button"
-              className="btn btn-primary"
+              className={styles.contacts_list_delete_btn}
               onClick={() => dispatch(deleteContactThunk(contact.id))}
             >
               DELETE
