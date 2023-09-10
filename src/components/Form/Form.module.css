@@ -1,5 +1,4 @@
-
-.section_login {
+.section_contacts_form {
   text-align: center;
   padding: 30px;
   background-color: #f9f9f9;
@@ -10,30 +9,25 @@
 }
 
 
-.section_login_title {
-  font-size: 24px;
+
+.contacts_form_title{
+ font-size: 24px;
   margin-bottom: 20px;
   color: #333;
   text-transform: uppercase;
 }
 
-
-.input_container {
-  margin-bottom: 20px;
-}
-
-
-.label {
-  display: block;
+.contacts_form_label{
+    display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
 }
 
-
-.input_field {
-  width: 100%;
+.contacts_form_input{
+  min-width:378px;
   padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -41,14 +35,12 @@
    outline: none;
 }
 
-
-.input_field:focus{
+.contacts_form_input:focus{
   border-color: #378c2a;
 }
 
-
-.button_login {
-  width: 100%;
+.contacts_form_button{
+    width: 100%;
   padding: 10px;
   background-color: #378c2a;
   color: #fff;
@@ -59,8 +51,7 @@
   transition: background-color 0.8s ease;
 }
 
-
-.button_login:hover {
+.contacts_form_button:hover {
  background-color: #2ad110ae; 
   transition: background-color 0.6s ease;
 }

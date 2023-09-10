@@ -1,9 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStateContacts } from 'redux/selectors';
 import { addContactThunk } from 'redux/contactsThunk/contactsThunk';
+import styles from './Form.module.css';
 
 export const Form = () => {
   const [contactInfo, setContactInfo] = useState({ name: '', number: '' });
@@ -37,43 +37,48 @@ export const Form = () => {
   };
 
   return (
-    <form className="row gx-3 gy-2 align-items-center" onSubmit={handleSubmit}>
-      <h2>Phonebook</h2>
-      <div className="col-sm-3">
-        <label className="visually-hidden" htmlFor="specificSizeInputName">
-          Name
-        </label>
+    <form className={styles.contacts_form} onSubmit={handleSubmit}>
+      <h2 className={styles.contacts_form_title}>Phonebook</h2>
+
+      <label
+        className={styles.contacts_form_label}
+        htmlFor="specificSizeInputName"
+      >
         Name
-        <input
-          className="form-control"
-          id="inputName"
-          type="text"
-          name="name"
-          value={contactInfo.name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          onChange={handleChange}
-          required
-        />
-        <label className="visually-hidden" htmlFor="specificSizeInputName">
-          Number
-        </label>
+      </label>
+
+      <input
+        className={styles.contacts_form_input}
+        id="inputName"
+        type="text"
+        name="name"
+        value={contactInfo.name}
+        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        onChange={handleChange}
+        required
+      />
+      <label
+        className={styles.contacts_form_label}
+        htmlFor="specificSizeInputName"
+      >
         Number
-        <input
-          className="form-control"
-          id="inputNumber"
-          type="tel"
-          name="number"
-          value={contactInfo.number}
-          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          onChange={handleChange}
-          required
-        />
-      </div>
+      </label>
+
+      <input
+        className={styles.contacts_form_input}
+        id="inputNumber"
+        type="tel"
+        name="number"
+        value={contactInfo.number}
+        pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        onChange={handleChange}
+        required
+      />
 
       <div className="col-auto">
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className={styles.contacts_form_button}>
           Submit
         </button>
       </div>

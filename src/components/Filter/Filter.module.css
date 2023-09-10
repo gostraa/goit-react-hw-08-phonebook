@@ -1,0 +1,17 @@
+.contacts_form_filter_title{
+     font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+
+.contacts_form_filter_input{
+    min-width:378px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+   outline: none;
+}
