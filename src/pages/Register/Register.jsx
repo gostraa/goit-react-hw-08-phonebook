@@ -34,7 +34,7 @@ const Register = () => {
     register(newUser)
       .then(() => {
         console.log('ok');
-        navigate('/contacts');
+        navigate('/login');
       })
       .catch(error => {
         console.log(error);
