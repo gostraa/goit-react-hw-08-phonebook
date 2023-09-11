@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Login.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/authThunk/authThunk';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,14 +10,8 @@ const Login = () => {
     password: '',
   });
 
-  const isAuth = useSelector(state => state.auth.token);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    isAuth && navigate('/contacts');
-  }, [isAuth, navigate]);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -33,6 +27,7 @@ const Login = () => {
     dispatch(
       loginThunk({ email: loginInfo.email, password: loginInfo.password })
     );
+    navigate('/contacts');
   };
   return (
     <section className={styles.section_login}>

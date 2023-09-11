@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 
-const setToken = token => {
+export const setToken = token => {
   instance.defaults.headers.common['Authorization'] = token;
 };
 
@@ -13,7 +13,9 @@ export const deleteToken = () => {
 };
 
 export const register = async body => {
-  return await instance.post('/users/signup', body);
+  const response = await instance.post('/users/signup', body);
+  setToken(`Bearer ${response.data.token}`);
+  return response.data;
 };
 
 export const login = async body => {
@@ -28,6 +30,6 @@ export const getProfile = async () => {
 };
 
 export const logOut = async () => {
-  await instance.post('/users/logout');
+  instance.post('/users/logout');
   deleteToken();
 };

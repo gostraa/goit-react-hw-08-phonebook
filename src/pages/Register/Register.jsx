@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import styles from './Register.module.css';
-import { register } from 'services/auth-service';
+
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerThunk } from 'redux/authThunk/authThunk';
 
 const Register = () => {
-  const navigate = useNavigate();
-  const { profile } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     userName: '',
     userEmail: '',
@@ -29,16 +29,7 @@ const Register = () => {
       password: userInfo.password,
     };
 
-    console.log(newUser);
-
-    register(newUser)
-      .then(() => {
-        console.log('ok');
-        navigate('/login');
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    dispatch(registerThunk(newUser));
   };
 
   return (

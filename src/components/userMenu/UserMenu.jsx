@@ -1,7 +1,8 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { getProfileThunk, logOutThunk } from 'redux/authThunk/authThunk';
+import { logOutThunk } from 'redux/authThunk/authThunk';
+import { deleteToken } from 'services/auth-service';
 
 import styled from 'styled-components';
 
@@ -48,18 +49,15 @@ const SuspenseFallback = styled.div`
 `;
 
 const Header = () => {
-  const { profile, token } = useSelector(state => state.auth);
+  const { profile } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogOut = () => {
     dispatch(logOutThunk());
     navigate('/');
+    deleteToken();
   };
-
-  useEffect(() => {
-    token && dispatch(getProfileThunk());
-  }, [token, dispatch]);
 
   return (
     <>

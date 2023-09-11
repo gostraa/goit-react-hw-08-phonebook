@@ -2,10 +2,11 @@ import {
   getProfileThunk,
   logOutThunk,
   loginThunk,
+  refreshThunk,
   registerThunk,
 } from 'redux/authThunk/authThunk';
 
-const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
+const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
   token: '',
@@ -22,6 +23,7 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
   state.token = payload.token;
+  state.profile = payload.user;
 };
 
 const handleRejected = (state, { payload }) => {
@@ -49,18 +51,13 @@ const authSlice = createSlice({
     builder
       .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
       .addCase(logOutThunk.fulfilled, handlelogOut)
-      .addMatcher(
-        isAnyOf(loginThunk.fulfilled, registerThunk.fulfilled),
-        handleFulfilled
-      )
-      .addMatcher(
-        isAnyOf(loginThunk.pending, getProfileThunk.pending),
-        handlePending
-      )
-      .addMatcher(
-        isAnyOf(loginThunk.rejected, getProfileThunk.rejected),
-        handleRejected
-      );
+      .addCase(loginThunk.fulfilled, handleFulfilled)
+      .addCase(registerThunk.fulfilled, handleFulfilled)
+      .addCase(refreshThunk.fulfilled, handleFulfilledProfile)
+      .addCase(loginThunk.pending, handlePending)
+      .addCase(getProfileThunk.pending, handlePending)
+      .addCase(loginThunk.rejected, handleRejected)
+      .addCase(getProfileThunk.rejected, handleRejected);
   },
 });
 
