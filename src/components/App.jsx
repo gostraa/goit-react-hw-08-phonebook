@@ -1,6 +1,6 @@
 import Contacts from 'pages/Contacts/Contacts';
 import { Route, Routes } from 'react-router-dom';
-import Header from './Header/UserMenu';
+import Header from './userMenu/UserMenu';
 import Register from 'pages/Register/Register';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import Login from 'pages/Login/Login';

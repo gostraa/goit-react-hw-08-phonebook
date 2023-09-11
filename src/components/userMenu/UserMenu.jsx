@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 
 import { getProfileThunk, logOutThunk } from 'redux/authThunk/authThunk';
 
@@ -8,9 +8,11 @@ const Header = () => {
   // const isAuth = useSelector(state => state.auth.token);
   const { profile, token } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     dispatch(logOutThunk());
+    navigate('/welcome');
   };
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const Header = () => {
     <>
       <header>
         <nav>
-          <NavLink to={'/welcome'}>Home</NavLink>
+          {!profile && <NavLink to={'/welcome'}>Home</NavLink>}
           {profile && (
             <div>
               <p>{profile.email}</p>

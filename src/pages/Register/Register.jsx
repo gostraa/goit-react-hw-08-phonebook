@@ -2,9 +2,11 @@ import { useState } from 'react';
 import styles from './Register.module.css';
 import { register } from 'services/auth-service';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Register = () => {
   const navigate = useNavigate();
+  const { profile } = useSelector(state => state.auth);
   const [userInfo, setUserInfo] = useState({
     userName: '',
     userEmail: '',
@@ -27,9 +29,12 @@ const Register = () => {
       password: userInfo.password,
     };
 
+    console.log(newUser);
+
     register(newUser)
       .then(() => {
-        console.log(123);
+        console.log('ok');
+        navigate('/contacts');
       })
       .catch(error => {
         console.log(error);

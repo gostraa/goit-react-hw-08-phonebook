@@ -2,6 +2,7 @@ import {
   getProfileThunk,
   logOutThunk,
   loginThunk,
+  registerThunk,
 } from 'redux/authThunk/authThunk';
 
 const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
@@ -46,9 +47,12 @@ const authSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(loginThunk.fulfilled, handleFulfilled)
       .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
       .addCase(logOutThunk.fulfilled, handlelogOut)
+      .addMatcher(
+        isAnyOf(loginThunk.fulfilled, registerThunk.fulfilled),
+        handleFulfilled
+      )
       .addMatcher(
         isAnyOf(loginThunk.pending, getProfileThunk.pending),
         handlePending
