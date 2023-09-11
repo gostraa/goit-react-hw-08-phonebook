@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import styles from './Register.module.css';
 
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerThunk } from 'redux/authThunk/authThunk';
 
 const Register = () => {
