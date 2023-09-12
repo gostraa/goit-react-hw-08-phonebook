@@ -7,7 +7,9 @@ export const Filter = () => {
 
   return (
     <div className={styles.contacts_form_filter_wrapper}>
-      <p className={styles.contacts_form_filter_title}>Filter my contacts 😄</p>
+      <p className={styles.contacts_form_filter_title}>
+        Filter for contacts 😄
+      </p>
       <input
         name="filter"
         className={styles.contacts_form_filter_input}
