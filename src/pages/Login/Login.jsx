@@ -11,7 +11,6 @@ const Login = () => {
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleChange = e => {
     const { name, value } = e.target;
