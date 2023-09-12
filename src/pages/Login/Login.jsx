@@ -26,8 +26,13 @@ const Login = () => {
     e.preventDefault();
     dispatch(
       loginThunk({ email: loginInfo.email, password: loginInfo.password })
-    );
-    navigate('/contacts');
+    )
+      .then(() => {
+        navigate('/contacts');
+      })
+      .catch(error => {
+        setLoginInfo({ email: '', password: '' });
+      });
   };
   return (
     <section className={styles.section_login}>
