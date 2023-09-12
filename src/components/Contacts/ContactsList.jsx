@@ -29,11 +29,14 @@ export const ContactsList = () => {
 
   return (
     <>
-      <h2 className={styles.contacts_list_title}>Contacts</h2>
+      <h2 className={styles.contacts_list_title}>My contacts</h2>
       <ul className={styles.contacts_list}>
         {filteredContacts.map(contact => (
           <li className={styles.contacts_list_item} key={contact.id}>
-            {contact.name} : {contact.number}{' '}
+            <div className={styles.contacts_list_item_wrapper}>
+              <p>{contact.name}:</p>
+              <p> {contact.number}</p>
+            </div>
             <button
               type="button"
               className={styles.contacts_list_delete_btn}

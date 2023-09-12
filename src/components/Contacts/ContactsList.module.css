@@ -1,19 +1,28 @@
 .contacts_list_title{
-    font-size: 24px;
+  font-size: 24px;
   margin-bottom: 20px;
- 
   color: #333;
   text-transform: uppercase;
 }
 
 .contacts_list{
+
     font-size: 18px;
     list-style: none;
     padding: 0;
 }
 
+.contacts_list_item_wrapper{
+  display: flex;
+}
+
 .contacts_list_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
     margin-bottom: 20px;
+   
   
 }
 
@@ -27,6 +36,7 @@
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.8s ease;
+  margin-left: auto;
 }
 
 .contacts_list_delete_btn:hover {
