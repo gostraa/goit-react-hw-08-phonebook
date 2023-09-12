@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/authThunk/authThunk';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
